@@ -7,6 +7,6 @@
       }
     ],
     "routes": [
-      { "handle": "./routes/authRoutes", "src": "/.*" }
+      { "handle": "authRoutes", "src": "/.*" }
     ]
   }
