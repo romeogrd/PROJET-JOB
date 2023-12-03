@@ -9,7 +9,7 @@
   "routes": [
     { "src": "/.*", "dest": "app.js" }
   ],
-  "env": {
-    "VIEWS_PATH": "./views"
-  }
+  "env": [
+    { "VIEWS_PATH": "viewsPath" }
+  ]
 }
