@@ -7,6 +7,6 @@
       }
     ],
     "routes": [
-      { "handle": "router", "src": "/.*" }
+      { "src": "/.*", "dest": "app.js" }
     ]
   }
