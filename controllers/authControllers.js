@@ -1,9 +1,9 @@
 module.exports.signup_get = (req,res) => {
-    res.render('signup');
+    res.render('signup.ejs');
 }
 
 module.exports.login_get = (req,res) => {
-    res.render('login');
+    res.render('login.ejs');
 }
 
 module.exports.signup_post = (req,res) => {
@@ -19,5 +19,5 @@ module.exports.login_post = (req,res) => {
 }
 
 module.exports.dashboard_get =(req, res) => {
-        res.render('dashboard');
+        res.render('dashboard.ejs');
 }

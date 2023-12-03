@@ -10,6 +10,7 @@ app.use(express.static('public')); //pour les img et le css
 app.use (express.json());
 
 app.set('view engine', 'ejs');
+app.set('views', '/views'); 
 
 //db connection
 mongoose.connect ('mongodb+srv://romeogerard:Romeo44!@cluster0.shclbxx.mongodb.net/JobApplyTracker')
