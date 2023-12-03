@@ -13,6 +13,6 @@
     }
   ],
   "env": {
-    "VIEWS_PATH": "VIEWS_PATH"
+    "VIEWS_PATH": "./views"
   }
 }

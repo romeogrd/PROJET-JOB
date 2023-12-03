@@ -14,7 +14,7 @@ require('dotenv').config();
 
 
 app.set('view engine', 'ejs');
-app.set('views', process.env.VIEWS_PATH);
+app.set('views', "./vews");
 
 //db connection
 mongoose.connect(process.env.MONGODB_URI)
@@ -23,10 +23,7 @@ mongoose.connect(process.env.MONGODB_URI)
 .catch((err) => console.log(err));
 
  
-/* app.get('/', (req, res)  => {
-    res.render('dashboard');
-}); 
-app.get('/dashboard', (req, res) => res.render('dashboard')); */
+
 app.use(authRoutes);
 
 module.exports = app;
