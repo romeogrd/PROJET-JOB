@@ -16,7 +16,7 @@ app.set('view engine', 'ejs');
 app.set('views', './views');
 
 //db connection
-mongoose.connect (process.env.MONGODB_URI)
+mongoose.connect(process.env.MONGODB_URI)
 .then((result) => app.listen(3000))
 .then(console.log('Connect to the database'))
 .catch((err) => console.log(err));
