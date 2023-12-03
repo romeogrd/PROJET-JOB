@@ -7,9 +7,9 @@
     }
   ],
   "routes": [
-    { "src": "/.*", "methods": ["POST", "GET"], "dest": "app.js" }
+    { "src": "/.*", "dest": "app.js" }
   ],
   "env": {
-    "VIEWS_PATH": "./views"
+    "VIEWS_PATH": "VIEWS_PATH"
   }
 }
