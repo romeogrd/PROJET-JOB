@@ -14,7 +14,7 @@ require('dotenv').config();
 
 
 app.set('view engine', 'ejs');
-app.set('views', './views');
+app.set('views', process.env.VIEWS_PATH);
 
 //db connection
 mongoose.connect(process.env.MONGODB_URI)
