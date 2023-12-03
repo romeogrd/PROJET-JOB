@@ -10,7 +10,7 @@ app.use(express.static('public')); //pour les img et le css
 app.use (express.json());
 
 require('dotenv').config();
-const viewsPath = process.env.VIEWS_PATH;
+
 
 app.set('view engine', 'ejs');
 app.set('views', './views');
