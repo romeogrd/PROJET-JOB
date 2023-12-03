@@ -3,10 +3,11 @@ const mongoose = require('mongoose');
 const authRoutes = require('./routes/authRoutes');
 const app = express();
 
-app.use (express.json());
+
 app.use (express.urlencoded({ extended: true}));
 
 app.use(express.static('public')); //pour les img et le css
+app.use (express.json());
 
 app.set('view engine', 'ejs');
 
