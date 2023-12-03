@@ -17,3 +17,7 @@ module.exports.login_post = (req,res) => {
     console.log (email, password);
     res.send('user login');
 }
+
+module.exports.dashboard_get =(req, res) => {
+        res.render('dashboard');
+}

@@ -17,14 +17,11 @@ mongoose.connect ('mongodb+srv://romeogerard:Romeo44!@cluster0.shclbxx.mongodb.n
 .then(console.log('Connect to the database'))
 .catch((err) => console.log(err));
 
-/* app.listen(3000, () => {
-        console.log('server is started');
-});
- */
-app.get('/', (req, res)  => {
+ 
+/* app.get('/', (req, res)  => {
     res.render('dashboard');
 }); 
-app.get('/dashboard', (req, res) => res.render('dashboard'));
+app.get('/dashboard', (req, res) => res.render('dashboard')); */
 app.use(authRoutes);
 
 module.exports = app;
