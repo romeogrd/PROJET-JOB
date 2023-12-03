@@ -18,6 +18,6 @@ module.exports.login_post = (req,res) => {
     res.send('user login');
 }
 
-module.exports.dashboard_get =(req, res) => {
-        res.render('dashboard');
+module.exports.index_get = (req, res) => {
+    res.render('index');
 }
