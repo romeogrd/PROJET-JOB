@@ -9,7 +9,7 @@ const cookieParser = require('cookie-parser');
 
 app.use (express.urlencoded({ extended: true}));
 
-app.use(express.static(__dirname + '/public/')); //pour les img et le css
+app.use(express.static(/* __dirname +  */'/public/')); //pour les img et le css
 app.use (express.json());
 app.use(cookieParser());
 
