@@ -8,7 +8,7 @@ const path = require('path');
 
 app.use (express.urlencoded({ extended: true}));
 
-app.use(express.static('public')); //pour les img et le css
+app.use(express.static(__dirname + '/public/')); //pour les img et le css
 app.use (express.json());
 
 require('dotenv').config();
