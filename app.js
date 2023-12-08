@@ -5,6 +5,7 @@ const app = express();
 const dotenv = require("dotenv");
 const path = require('path');
 const cookieParser = require('cookie-parser');
+const bcrypt = require('bcrypt');
 
 
 app.use (express.urlencoded({ extended: true}));
