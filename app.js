@@ -4,12 +4,14 @@ const authRoutes = require('./routes/authRoutes');
 const app = express();
 const dotenv = require("dotenv");
 const path = require('path');
+const cookieParser = require('cookie-parser');
 
 
 app.use (express.urlencoded({ extended: true}));
 
 app.use(express.static(__dirname + '/public/')); //pour les img et le css
 app.use (express.json());
+app.use(cookieParser());
 
 require('dotenv').config();
 
@@ -23,8 +25,11 @@ mongoose.connect(process.env.MONGODB_URI)
 .then(console.log('Connect to the database'))
 .catch((err) => console.log(err));
 
- 
+ // cookies
+
 
 app.use(authRoutes);
+
+
 
 module.exports = app;
