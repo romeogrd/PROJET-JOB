@@ -5,11 +5,11 @@ const app = express();
 const dotenv = require("dotenv");
 const path = require('path');
 const cookieParser = require('cookie-parser');
+const {requireAuth} = require('./middleware/authMiddleware');
 
 
 
 app.use (express.urlencoded({ extended: true}));
-
 app.use(express.static(__dirname + '/public/')); //pour les img et le css
 app.use (express.json());
 app.use(cookieParser());
@@ -26,7 +26,8 @@ mongoose.connect(process.env.MONGODB_URI)
 .then(console.log('Connect to the database'))
 .catch((err) => console.log(err));
 
- // cookies
+app.get(['/','/index'], requireAuth, (req, res) => res.render('index'));
+
 
 
 app.use(authRoutes);
