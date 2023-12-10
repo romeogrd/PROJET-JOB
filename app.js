@@ -5,7 +5,7 @@ const app = express();
 const dotenv = require("dotenv");
 const path = require('path');
 const cookieParser = require('cookie-parser');
-const {requireAuth} = require('./middleware/authMiddleware');
+const {requireAuth, checkUser} = require('./middleware/authMiddleware');
 
 
 
@@ -26,6 +26,8 @@ mongoose.connect(process.env.MONGODB_URI)
 .then(console.log('Connect to the database'))
 .catch((err) => console.log(err));
 
+
+app.get('*', checkUser);
 app.get(['/','/index'], requireAuth, (req, res) => res.render('index'));
 
 
