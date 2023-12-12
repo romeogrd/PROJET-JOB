@@ -2,12 +2,34 @@
 
     <form>
         <h2>Sign up</h2>
-        <label for="email">>Email</label>
+        <label for="firstname">First name</label>
+        <input type="text" name="firstname" required>
+        <div class="firstname error"></div>
+        <br>
+        <label for="lastname">Last name</label>
+        <input type="text" name="lastname" required>
+        <div class="lastname error"></div>
+        <br>
+
+
+        <label for="email">Email</label>
         <input type="text" name="email" required>
         <div class="email error"></div>
-        <label for="password">>Password</label>
+
+        <br>
+
+        <label for="github">GitHub [format : http://adress.com]</label>
+        <input type="url" name="github">
+        <div class="github error"></div>
+        <br>
+        <label for="password">Password</label>
         <input type="password" name="password" required>
         <div class="password error"></div>
+        <br>
+        <label for="repeatPassword">Repeat password</label>
+        <input type="password" name="repeatPassword" required>
+        <div class="repeatPassword error"></div>
+
         <button>Sign up</button>
     </form>
 
@@ -15,6 +37,12 @@
         const form = document.querySelector('form');
         const emailError = document.querySelector(".email.error");
         const passwordError = document.querySelector(".password.error");
+        const repeatPasswordError = document.querySelector(".repeatPassword.error");
+        const firstnameError = document.querySelector(".firstname.error");
+        const lastnameError = document.querySelector(".lastname.error");
+        const githubError = document.querySelector(".github.error");
+
+
 
 
         form.addEventListener('submit', async (e) => {
@@ -23,31 +51,48 @@
             // reset errors
             emailError.textContent = '';
             passwordError.textContent = '';
-
+            firstnameError.textContent = '';
+            lastnameError.textContent = '';
+            repeatPasswordError.textContent = '';
 
             // get the values
             const email = form.email.value;
             const password = form.password.value;
-            try {
-                const res = await fetch('/signup', {
-                    method: 'POST',
-                    body: JSON.stringify({ email, password }),
-                    headers: { 'Content-Type': 'application/json' }
-                });
-                const data = await res.json();
-                console.log(data);
-                if (data.errors) {
-                    emailError.textContent = data.errors.email;
-                    passwordError.textContent = data.errors.password;
+            const repeatPassword = form.repeatPassword.value;
+            const firstname = form.firstname.value;
+            const lastname = form.lastname.value;
+            const github = form.github.value;
+            
+
+
+            if (password === repeatPassword) {
+
+                try {
+                    const res = await fetch('/signup', {
+                        method: 'POST',
+                        body: JSON.stringify({ email, password, firstname, lastname, github }),
+                        headers: { 'Content-Type': 'application/json' }
+                    });
+                    const data = await res.json();
+                    console.log(data);
+                    if (data.errors) {
+                        emailError.textContent = data.errors.email;
+                        passwordError.textContent = data.errors.password;
+                        firstnameError.textContent = data.errors.firstname;
+                        lastnameError.textContent = data.errors.lastname;
+                        githubError.textContent = data.errors.github;
+                    }
+                    if (data.user) {
+                        location.assign('/');
+                    }
                 }
-                if (data.user) {
-                    location.assign('/');
+                catch (err) {
+                    console.log(err);
                 }
-            }
-            catch (err) {
-                console.log(err);
+            } else {
+                repeatPasswordError.textContent = 'passwords are not the same';
             }
         })
     </script>
 
-<%- include('./partials/footer') -%>
+    <%- include('./partials/footer') -%>

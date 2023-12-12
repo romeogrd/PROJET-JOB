@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const { isEmail } = require('validator');
+
 const bcrypt = require('bcryptjs');
 
 const userSchema = new mongoose.Schema({
@@ -12,8 +13,19 @@ const userSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        required: [true, 'Please enter an password'],
+        required: [true, 'Please enter a password'],
         minlength: [6, 'Minimum password length is 6 characters']
+    },
+    firstname: {
+        type: String,
+        required: [true, 'Please enter your first name' ],
+    },
+    lastname: {
+        type: String,
+        required: [true, 'Please enter your last name' ],
+    },
+    github: {
+        type: String,
     },
 });
 
