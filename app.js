@@ -29,6 +29,7 @@ mongoose.connect(process.env.MONGODB_URI)
 
 app.get('*', checkUser);
 app.get(['/','/index'], requireAuth, (req, res) => res.render('index'));
+app.get(['/newjob'], requireAuth, (req, res) => res.render('newjob'));
 
 
 

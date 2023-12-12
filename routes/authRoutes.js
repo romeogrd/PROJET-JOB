@@ -9,5 +9,6 @@ router.get('/login', authController.login_get);
 router.post('/login', authController.login_post);
 router.get('/', authController.index_get);
 router.get('/logout', authController.logout_get);
+router.get('/newjob', authController.newjob_get);
 
 module.exports = router;

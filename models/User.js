@@ -27,6 +27,7 @@ const userSchema = new mongoose.Schema({
     github: {
         type: String,
     },
+    
 });
 
 //fire a function after doc saved to db

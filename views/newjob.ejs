@@ -1,0 +1,58 @@
+<%- include('./partials/header') -%>
+
+
+<form>
+    <h1>Create job</h1>
+
+    <label for="jobtitle">Job title</label>
+    <input type="text" name="jobtitle" required>
+    <div class="jobtitle error"></div>
+
+    <label for="website">Website</label>
+    <input type="text" name="website" required>
+    <div class="website error"></div>
+
+    <h2>Employer's contact</h2>
+
+    <label for="nameEmployer">Name</label>
+    <input type="text" name="nameEmployer">
+    <div class="nameEmployer error"></div>
+
+    <label for="emailEmployer">Email</label>
+    <input type="email" name="emailEmployer">
+    <div class="emailEmployer error"></div>
+
+    <label for="phoneEmployer">Phone</label>
+    <input type="text" name="phoneEmployer">
+    <div class="phoneEmployer error"></div>
+
+    <label for="adressEmployer">Adress</label>
+    <input type="text" name="adressEmployer">
+    <div class="adressEmployer error"></div>
+    <br>
+    <p>Origin</p>
+    <input type="radio" id="origin1" name="origin" value="Spontaneous application" required>
+    <label for="origin">Spontaneous application</label>
+    <input type="radio" id="origin2" name="origin" value="Job offer">
+    <label for="origin">Job offer</label>
+    <br>
+    <p>Status</p>
+    <input type="radio" id="status1" name="status" value="Interested" required>
+    <label for="status">Interested</label>
+    <input type="radio" id="status2" name="status" value="CV sent">
+    <label for="status">CV sent</label>
+    <input type="radio" id="status3" name="status" value="Negative">
+    <label for="status">Negative</label>
+    <input type="radio" id="status4" name="status" value="Interview">
+    <label for="status">Interview</label>
+
+    <br>
+    <label for="comments">Comments</label><br>
+    <input type="textarea" name="phoneEmployer">
+    <div class="phoneEmployer error"></div>
+  
+    <button>Create</button>
+
+</form>
+
+<%- include('./partials/footer') -%>
