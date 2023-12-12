@@ -1,5 +1,6 @@
 const User = require('../models/User');
 const jwt = require ('jsonwebtoken');
+const Job = require('../models/Job');
 
 //handle errors
 
@@ -89,4 +90,24 @@ module.exports.logout_get = (req, res) => {
 
 module.exports.newjob_get = (req, res) => {
     res.render('newjob');
+}
+
+module.exports.newjob_put = async (req,res) => {
+    const { jobtitle, website, nameEmployer, emailEmployer, phoneEmployer, adressEmployer, origin, status, comments } = req.body;
+    
+    try {
+        const currentUser = res.locals.user; 
+        const job = await Job.create({ jobtitle, website, nameEmployer, emailEmployer, phoneEmployer, adressEmployer, origin, status, comments });
+
+        
+        currentUser.jobs.push(job);
+
+        await currentUser.save();
+        res.status(201).json({ job: job._id });
+
+    }
+    catch(err) {
+      /*   const errors = handleErrors(err); */
+        res.status(400)/* .json({ errors }); */
+    }
 }

@@ -10,5 +10,6 @@ router.post('/login', authController.login_post);
 router.get('/', authController.index_get);
 router.get('/logout', authController.logout_get);
 router.get('/newjob', authController.newjob_get);
+router.put('/newjob', authController.newjob_put);
 
 module.exports = router;

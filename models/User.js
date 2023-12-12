@@ -1,42 +1,11 @@
 const mongoose = require('mongoose');
+const Job = require('./Job')
 const { isEmail } = require('validator');
 
 const bcrypt = require('bcryptjs');
 
 
-const jobSchema = new mongoose.Schema({
-    jobtitle: {
-        type: String,
-        required: true,
-    },
-    website: {
-        type: String,
-        required: true,
-    },
-    nameEmployer: {
-        type: String,
-    },
-    emailEmployer: {
-        type: String,
-    },
-    phoneEmployer: {
-        type: String,
-    },
-    adressEmployer: {
-        type: String,
-    },
-    origin: {
-        type: String,
-        required: true,
-    },
-    status: {
-        type: String,
-        required: true,
-    },
-    comments: {
-        type: String,
-    },
-});
+
 
 const userSchema = new mongoose.Schema({
     email: {
@@ -62,7 +31,10 @@ const userSchema = new mongoose.Schema({
     github: {
         type: String,
     },
-    job: [jobSchema],
+    jobs: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Job',
+    }],
 });
 
 //fire a function after doc saved to db
