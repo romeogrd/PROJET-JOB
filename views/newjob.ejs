@@ -82,7 +82,7 @@
 
             try {
                 const res = await fetch('/newjob', {
-                    method: 'PUT',
+                    method: 'POST',
                     body: JSON.stringify({ jobtitle, website, nameEmployer, emailEmployer, phoneEmployer, adressEmployer, origin, status, comments }),
                     headers: { 'Content-Type': 'application/json' }
                 });

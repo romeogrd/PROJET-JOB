@@ -13,6 +13,7 @@ app.use (express.urlencoded({ extended: true}));
 app.use(express.static(__dirname + '/public/')); //pour les img et le css
 app.use (express.json());
 app.use(cookieParser());
+app.use(checkUser);
 
 require('dotenv').config();
 

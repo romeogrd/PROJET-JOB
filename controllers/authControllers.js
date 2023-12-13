@@ -92,11 +92,12 @@ module.exports.newjob_get = (req, res) => {
     res.render('newjob');
 }
 
-module.exports.newjob_put = async (req,res) => {
+module.exports.newjob_post = async (req,res) => {
     const { jobtitle, website, nameEmployer, emailEmployer, phoneEmployer, adressEmployer, origin, status, comments } = req.body;
     
     try {
         const currentUser = res.locals.user; 
+        console.log('Current User:', currentUser);
         const job = await Job.create({ jobtitle, website, nameEmployer, emailEmployer, phoneEmployer, adressEmployer, origin, status, comments });
 
         
