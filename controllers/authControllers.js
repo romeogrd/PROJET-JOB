@@ -84,26 +84,36 @@ module.exports.login_post = async (req,res) => {
 
 module.exports.index_get = async (req, res) => {
     try {
-        const user = res.locals.user;
-        console.log('User in index_get:', user);
-        // Vérifiez si user et user.jobs sont définis
-        if (user && user.jobs && user.jobs.length > 0) {
-            const userJobId = user.jobs[0]._id;
-
-            // Vérifiez si user.jobs[0]._id est défini
-            if (userJobId) {
-                const jobs = await Job.find({ _id: userJobId }).exec();
-                res.render('index', { user, jobs });
-            } else {
-                res.render('index', { user: null, jobs: [] });
+      const user = res.locals.user;
+      console.log('User in index_get:', user);
+  
+      if (user && user.jobs && user.jobs.length > 0) {
+        const jobsDetails = await Promise.all(
+          user.jobs.map(async (jobId) => {
+            try {
+              const job = await Job.findById(jobId).exec();
+              console.log('Job details:', job);
+              return job;
+            } catch (error) {
+              console.error('Error fetching job details:', error);
+              return null;
             }
-        } else {
-            res.render('index', { user: null, jobs: [] });
-        }
+          })
+        );
+  
+        console.log('Jobs details:', jobsDetails);
+        res.locals.jobs = jobsDetails;
+        res.render('index', { user, jobs: jobsDetails });
+      } else {
+        res.render('index', { user: null, jobs: [] });
+      }
     } catch (error) {
-        res.status(500).send(`Error: ${error.message}`);
+      console.error('Error in index_get:', error);
+      res.status(500).send(`Error: ${error.message}`);
     }
-};
+  };
+  
+  
 
 module.exports.logout_get = (req, res) => {
     res.cookie('jwt', '', { maxAge: 1});

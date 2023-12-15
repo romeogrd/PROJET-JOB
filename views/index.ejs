@@ -3,10 +3,16 @@
 <h1>Welcome to the homepage</h1>
 <h1><a href="/myprofile">My Profile</a></h1>
 
-<% console.log('User:', user); %>
+<% console.log('User:', user); console.log(jobs); %>
 <% if (user) { %>
-  <% if (user.jobs && user.jobs.length > 0) { %>
-    <%- include('./partials/job', { jobs: user.jobs }) -%>
+  <% if (jobs && jobs.length > 0) { %>
+    <% jobs.forEach((job) => { %>
+      <div class="job">
+        <p><%= job.status %></p>
+        <p><%= job.jobtitle %></p>
+        <p><%= job.nameEmployer %></p>
+      </div>
+    <% }); %>
   <% } else { %>
     <p>No jobs found</p>
   <% } %>
