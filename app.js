@@ -5,15 +5,16 @@ const app = express();
 const dotenv = require("dotenv");
 const path = require('path');
 const cookieParser = require('cookie-parser');
-const {requireAuth, checkUser} = require('./middleware/authMiddleware');
+const { requireAuth, checkUser } = require('./middleware/authMiddleware');
 
 
 
-app.use (express.urlencoded({ extended: true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/public/')); //pour les img et le css
-app.use (express.json());
+app.use(express.json());
 app.use(cookieParser());
 app.use(checkUser);
+app.use(authRoutes);
 
 require('dotenv').config();
 
@@ -23,18 +24,20 @@ app.set("views", path.join(__dirname, "views"));
 
 //db connection
 mongoose.connect(process.env.MONGODB_URI)
-.then((result) => app.listen(3000))
-.then(console.log('Connect to the database'))
-.catch((err) => console.log(err));
+    .then((result) => app.listen(3000))
+    .then(console.log('Connect to the database'))
+    .catch((err) => console.log(err));
 
 
 app.get('*', checkUser);
-app.get(['/','/index'], requireAuth, (req, res) => res.render('index'));
+app.get(['/', '/index'], requireAuth, (req, res) => res.render('index'));
 app.get(['/newjob'], requireAuth, (req, res) => res.render('newjob'));
+app.get(['/myprofile'], requireAuth, (req, res) => res.render('myprofile'));
+app.get(['/jobdetail'], requireAuth, (req, res) => res.render('jobdetail'));
 
 
 
-app.use(authRoutes);
+
 
 
 

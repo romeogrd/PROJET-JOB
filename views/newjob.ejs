@@ -1,84 +1,84 @@
 <%- include('./partials/header') -%>
 
 
-<form>
-    <h1>Create job</h1>
+    <form>
+        <h1>Create job</h1>
 
-    <label for="jobtitle">Job title</label>
-    <input type="text" name="jobtitle" required>
-    <div class="jobtitle error"></div>
+        <label for="jobtitle">Job title</label>
+        <input type="text" name="jobtitle" required>
+        <div class="jobtitle error"></div>
 
-    <label for="website">Website</label>
-    <input type="text" name="website" required>
-    <div class="website error"></div>
+        <label for="website">Website</label>
+        <input type="text" name="website" required>
+        <div class="website error"></div>
 
-    <h2>Employer's contact</h2>
+        <h2>Employer's contact</h2>
 
-    <label for="nameEmployer">Name</label>
-    <input type="text" name="nameEmployer">
-    <div class="nameEmployer error"></div>
+        <label for="nameEmployer">Name</label>
+        <input type="text" name="nameEmployer">
+        <div class="nameEmployer error"></div>
 
-    <label for="emailEmployer">Email</label>
-    <input type="email" name="emailEmployer">
-    <div class="emailEmployer error"></div>
+        <label for="emailEmployer">Email</label>
+        <input type="email" name="emailEmployer">
+        <div class="emailEmployer error"></div>
 
-    <label for="phoneEmployer">Phone</label>
-    <input type="text" name="phoneEmployer">
-    <div class="phoneEmployer error"></div>
+        <label for="phoneEmployer">Phone</label>
+        <input type="text" name="phoneEmployer">
+        <div class="phoneEmployer error"></div>
 
-    <label for="adressEmployer">Adress</label>
-    <input type="text" name="adressEmployer">
-    <div class="adressEmployer error"></div>
-    <br>
-    <p>Origin</p>
-    <input type="radio" id="origin1" name="origin" value="Spontaneous application" required>
-    <label for="origin">Spontaneous application</label>
-    <input type="radio" id="origin2" name="origin" value="Job offer">
-    <label for="origin">Job offer</label>
-    <br>
-    <p>Status</p>
-    <input type="radio" id="status1" name="status" value="Interested" required>
-    <label for="status">Interested</label>
-    <input type="radio" id="status2" name="status" value="CV sent">
-    <label for="status">CV sent</label>
-    <input type="radio" id="status3" name="status" value="Negative">
-    <label for="status">Negative</label>
-    <input type="radio" id="status4" name="status" value="Interview">
-    <label for="status">Interview</label>
+        <label for="adressEmployer">Adress</label>
+        <input type="text" name="adressEmployer">
+        <div class="adressEmployer error"></div>
+        <br>
+        <p>Origin</p>
+        <input type="radio" id="origin1" name="origin" value="Spontaneous application" required>
+        <label for="origin">Spontaneous application</label>
+        <input type="radio" id="origin2" name="origin" value="Job offer">
+        <label for="origin">Job offer</label>
+        <br>
+        <p>Status</p>
+        <input type="radio" id="status1" name="status" value="Interested" required>
+        <label for="status">Interested</label>
+        <input type="radio" id="status2" name="status" value="CV sent">
+        <label for="status">CV sent</label>
+        <input type="radio" id="status3" name="status" value="Negative">
+        <label for="status">Negative</label>
+        <input type="radio" id="status4" name="status" value="Interview">
+        <label for="status">Interview</label>
 
-    <br>
-    <label for="comments">Comments</label><br>
-    <input type="textarea" name="comments">
-    <div class="comments error"></div>
-  
-    <button>Create</button>
+        <br>
+        <label for="comments">Comments</label><br>
+        <input type="textarea" name="comments">
+        <div class="comments error"></div>
 
-</form>
+        <button>Create</button>
 
-<script>
-    const form = document.querySelector('form');
+    </form>
 
-
+    <script>
+        const form = document.querySelector('form');
 
 
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
 
-        // reset errors
-       
 
-        // get the values
-        const jobtitle = form.jobtitle.value;
-        const website = form.website.value;
-        const nameEmployer = form.nameEmployer.value;
-        const emailEmployer = form.emailEmployer.value;
-        const phoneEmployer = form.phoneEmployer.value;
-        const adressEmployer = form.adressEmployer.value;
-        const origin = form.origin.value;
-        const status = form.status.value;
-        const comments = form.comments.value;
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
 
-       
+            // reset errors
+
+
+            // get the values
+            const jobtitle = form.jobtitle.value;
+            const website = form.website.value;
+            const nameEmployer = form.nameEmployer.value;
+            const emailEmployer = form.emailEmployer.value;
+            const phoneEmployer = form.phoneEmployer.value;
+            const adressEmployer = form.adressEmployer.value;
+            const origin = form.origin.value;
+            const status = form.status.value;
+            const comments = form.comments.value;
+
+
 
             try {
                 const res = await fetch('/newjob', {
@@ -88,19 +88,15 @@
                 });
                 const data = await res.json();
                 console.log(data);
-                /* if (data.errors) {
-                    emailError.textContent = data.errors.email;
-                    passwordError.textContent = data.errors.password;
-                    firstnameError.textContent = data.errors.firstname;
-                    lastnameError.textContent = data.errors.lastname;
-                    githubError.textContent = data.errors.github;
-                } */
             }
             catch (err) {
                 console.log(err);
             }
-        
-    })
-</script>
+            if (!data.errors) {
+                form.reset();
+            }
 
-<%- include('./partials/footer') -%>
+        })
+    </script>
+
+    <%- include('./partials/footer') -%>

@@ -1,0 +1,10 @@
+<%- include('./partials/header') -%>
+
+<h2>My Profile</h2>
+<% if (user) { %>
+<p>Full Name : <%= user.firstname %> <%= user.lastname %></p>
+<p>Email : <%= user.email %></p>
+<p>Github : <%= user.github%></p>
+<% } %>
+    
+<%- include('./partials/footer') -%>
