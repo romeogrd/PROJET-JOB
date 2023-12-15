@@ -32,11 +32,13 @@ const checkUser = (req, res, next) => {
             if (err) {
                 console.log(err.message);
                 res.locals.user = null;
+                console.log('User not found');
                 next();
             } else {
                 console.log(decodedToken);
                 let user = await User.findById(decodedToken.id);
                 res.locals.user = user;
+                console.log('User found:', user);
                 next();
             }
         })

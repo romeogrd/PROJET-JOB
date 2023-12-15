@@ -81,22 +81,21 @@
 
 
             try {
-                const res = await fetch('/newjob', {
-                    method: 'POST',
-                    body: JSON.stringify({ jobtitle, website, nameEmployer, emailEmployer, phoneEmployer, adressEmployer, origin, status, comments }),
-                    headers: { 'Content-Type': 'application/json' }
-                });
-                const data = await res.json();
-                console.log(data);
-            }
-            catch (err) {
-                console.log(err);
-            }
-            if (!data.errors) {
-                form.reset();
-            }
+    const res = await fetch('/newjob', {
+        method: 'POST',
+        body: JSON.stringify({ jobtitle, website, nameEmployer, emailEmployer, phoneEmployer, adressEmployer, origin, status, comments }),
+        headers: { 'Content-Type': 'application/json' }
+    });
 
-        })
+    const data = await res.json(); // Cette ligne de code
+
+    if (!data.errors) {
+        form.reset();
+    }
+} catch (err) {
+    console.log(err);
+}
+        });
     </script>
 
     <%- include('./partials/footer') -%>

@@ -1,6 +1,8 @@
 const User = require('../models/User');
 const jwt = require ('jsonwebtoken');
 const Job = require('../models/Job');
+/* const { checkUser } = require('../middleware/authMiddleware'); */
+
 
 //handle errors
 
@@ -80,9 +82,29 @@ module.exports.login_post = async (req,res) => {
     }
 }
 
-module.exports.index_get = (req, res) => {
-    res.render('index');
-}
+module.exports.index_get = async (req, res) => {
+    try {
+        const user = res.locals.user;
+        console.log('User in index_get:', user);
+        // Vérifiez si user et user.jobs sont définis
+        if (user && user.jobs && user.jobs.length > 0) {
+            const userJobId = user.jobs[0]._id;
+
+            // Vérifiez si user.jobs[0]._id est défini
+            if (userJobId) {
+                const jobs = await Job.find({ _id: userJobId }).exec();
+                res.render('index', { user, jobs });
+            } else {
+                res.render('index', { user: null, jobs: [] });
+            }
+        } else {
+            res.render('index', { user: null, jobs: [] });
+        }
+    } catch (error) {
+        res.status(500).send(`Error: ${error.message}`);
+    }
+};
+
 module.exports.logout_get = (req, res) => {
     res.cookie('jwt', '', { maxAge: 1});
     res.redirect('/');
@@ -108,7 +130,7 @@ module.exports.newjob_post = async (req,res) => {
 
     }
     catch(err) {
-      /*   const errors = handleErrors(err); */
-        res.status(400)/* .json({ errors }); */
+      const errors = handleErrors(err);
+        res.status(400).json({ errors });
     }
 }

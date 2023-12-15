@@ -1,8 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const dotenv = require("dotenv");
 const authRoutes = require('./routes/authRoutes');
 const app = express();
-const dotenv = require("dotenv");
+
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const { requireAuth, checkUser } = require('./middleware/authMiddleware');
@@ -29,8 +30,13 @@ mongoose.connect(process.env.MONGODB_URI)
     .catch((err) => console.log(err));
 
 
+    // Fonction asynchrone qui renvoie la liste des jobs
+    
+
+  
+
 app.get('*', checkUser);
-app.get(['/', '/index'], requireAuth, (req, res) => res.render('index'));
+app.get(['/', '/index'], checkUser, requireAuth, async (req, res) => res.render('index'));
 app.get(['/newjob'], requireAuth, (req, res) => res.render('newjob'));
 app.get(['/myprofile'], requireAuth, (req, res) => res.render('myprofile'));
 app.get(['/jobdetail'], requireAuth, (req, res) => res.render('jobdetail'));
