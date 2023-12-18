@@ -125,12 +125,12 @@ module.exports.newjob_get = (req, res) => {
 }
 
 module.exports.newjob_post = async (req,res) => {
-    const { jobtitle, website, nameEmployer, emailEmployer, phoneEmployer, adressEmployer, origin, status, comments } = req.body;
+    const { jobtitle, website, company, nameEmployer, emailEmployer, phoneEmployer, adressEmployer, origin, status, comments } = req.body;
     
     try {
         const currentUser = res.locals.user; 
         console.log('Current User:', currentUser);
-        const job = await Job.create({ jobtitle, website, nameEmployer, emailEmployer, phoneEmployer, adressEmployer, origin, status, comments });
+        const job = await Job.create({ jobtitle, website, company, nameEmployer, emailEmployer, phoneEmployer, adressEmployer, origin, status, comments });
 
         
         currentUser.jobs.push(job);
@@ -143,4 +143,26 @@ module.exports.newjob_post = async (req,res) => {
       const errors = handleErrors(err);
         res.status(400).json({ errors });
     }
+}
+
+
+module.exports.jobdetail_get = async (req, res) => {
+    const jobId = req.params.jobId;
+  
+    try {
+      const job = await Job.findById(jobId).exec();
+  
+      if (job) {
+        res.render('jobdetail', { job }); // Render a job detail page with the job details
+      } else {
+        res.status(404).send('Job not found');
+      }
+    } catch (error) {
+      console.error('Error fetching job details:', error);
+      res.status(500).send('Internal Server Error');
+    }
+  };
+
+  module.exports.jobupdate_get = (req, res) => {
+    res.render('jobupdate');
 }

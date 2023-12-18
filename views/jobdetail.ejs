@@ -1,3 +1,20 @@
 <%- include('./partials/header') -%>
 
+<p><%= job.jobtitle %></p>
+       
+<p>Company : <%= job.company %></p>
+<p>website : <%= job.website %></p>
+<div class="line"></div>
+<p>Contact of the employer</p>
+<p>Name : <%= job.nameEmployer %></p>
+<p>Email : <%= job.emailEmployer %></p>
+<p>Phone : <%= job.phoneEmployer %></p>
+<p>Adress : <%= job.adressEmployer %></p>
+<div class="line"></div>
+<p><%= job.origin %></p>
+<p>Status : <%= job.status %></p>
+<p>Comment : <%= job.comments %></p>
+
+<a href="/jobupdate">Update</a>
+
 <%- include('./partials/footer') -%>

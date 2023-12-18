@@ -8,6 +8,10 @@
         <input type="text" name="jobtitle" required>
         <div class="jobtitle error"></div>
 
+        <label for="company">Email</label>
+        <input type="text" name="company">
+        <div class="company error"></div>
+
         <label for="website">Website</label>
         <input type="text" name="website" required>
         <div class="website error"></div>
@@ -70,6 +74,7 @@
             // get the values
             const jobtitle = form.jobtitle.value;
             const website = form.website.value;
+            const company = form.company.value;
             const nameEmployer = form.nameEmployer.value;
             const emailEmployer = form.emailEmployer.value;
             const phoneEmployer = form.phoneEmployer.value;
@@ -77,13 +82,13 @@
             const origin = form.origin.value;
             const status = form.status.value;
             const comments = form.comments.value;
-
+            
 
 
             try {
     const res = await fetch('/newjob', {
         method: 'POST',
-        body: JSON.stringify({ jobtitle, website, nameEmployer, emailEmployer, phoneEmployer, adressEmployer, origin, status, comments }),
+        body: JSON.stringify({ jobtitle, website, company, nameEmployer, emailEmployer, phoneEmployer, adressEmployer, origin, status, comments }),
         headers: { 'Content-Type': 'application/json' }
     });
 

@@ -16,6 +16,8 @@ router.get('/', checkUser, authController.index_get);
 router.get('/logout', authController.logout_get);
 router.get('/newjob', authController.newjob_get);
 router.post('/newjob', authController.newjob_post);
+router.get('/jobdetail/:jobId', authController.jobdetail_get);
+router.get('/jobupdate', authController.jobupdate_get)
 
 
 module.exports = router;

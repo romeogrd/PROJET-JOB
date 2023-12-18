@@ -40,6 +40,7 @@ app.get(['/', '/index'], checkUser, requireAuth, async (req, res) => res.render(
 app.get(['/newjob'], requireAuth, (req, res) => res.render('newjob'));
 app.get(['/myprofile'], requireAuth, (req, res) => res.render('myprofile'));
 app.get(['/jobdetail'], requireAuth, (req, res) => res.render('jobdetail'));
+app.get(['/jobupdate'], requireAuth, (req, res) => res.render('jobupdate'));
 
 
 
