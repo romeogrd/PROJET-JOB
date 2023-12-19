@@ -11,8 +11,8 @@ const { requireAuth, checkUser } = require('./middleware/authMiddleware');
 
 
 app.use(express.urlencoded({ extended: true }));
-app.use('/public', express.static('public'));
-
+app.use(express.static(__dirname + '/public')); //pour les img et le css  
+/* app.use('/public', express.static('public')); */
 app.use(express.json());
 app.use(cookieParser());
 app.use(checkUser);

@@ -21,10 +21,14 @@
 
   nav {
     background-color: #BEBEBE;
+    display: flex;
+    
+
   }
 
   body {
     background-color: #D9D9D9;
+    
   }
 
   
