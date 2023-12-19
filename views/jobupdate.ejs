@@ -1,3 +1,59 @@
 <%- include('./partials/header') -%>
+<form action="/jobupdate/<%= job._id %>" method="POST">
+
+<label for="jobtitle">Job title</label>
+<input type="text" name="jobtitle" value="<%= job.jobtitle %>" required>
+<div class="jobtitle error"></div>
+
+<label for="company">Company</label>
+<input type="text" name="company" value="<%= job.company %>" required>
+<div class="company error"></div>
+
+<label for="website">Website</label>
+<input type="text" name="website" value="<%= job.website %>" required>
+<div class="website error"></div>
+
+<h2>Employer's contact</h2>
+
+<label for="nameEmployer">Name</label>
+<input type="text" name="nameEmployer" value="<%= job.nameEmployer %>">
+<div class="nameEmployer error"></div>
+
+<label for="emailEmployer">Email</label>
+<input type="email" name="emailEmployer" value="<%= job.emailEmployer %>">
+<div class="emailEmployer error"></div>
+
+<label for="phoneEmployer">Phone</label>
+<input type="text" name="phoneEmployer" value="<%= job.phoneEmployer %>">
+<div class="phoneEmployer error"></div>
+
+<label for="adressEmployer">Adress</label>
+<input type="text" name="adressEmployer" value="<%= job.adressEmployer %>">
+<div class="adressEmployer error"></div>
+<br>
+<p>Origin</p>
+<input type="radio" id="origin1" name="origin" value="Spontaneous application" required>
+<label for="origin">Spontaneous application</label>
+<input type="radio" id="origin2" name="origin" value="Job offer">
+<label for="origin">Job offer</label>
+<br>
+<p>Status</p>
+<input type="radio" id="status1" name="status" value="Interested" required>
+<label for="status">Interested</label>
+<input type="radio" id="status2" name="status" value="CV sent">
+<label for="status">CV sent</label>
+<input type="radio" id="status3" name="status" value="Negative">
+<label for="status">Negative</label>
+<input type="radio" id="status4" name="status" value="Interview">
+<label for="status">Interview</label>
+
+<br>
+<label for="comments">Comments</label><br>
+<input type="textarea" name="comments" value="<%= job.comments %>">
+<div class="comments error"></div>
+
+<button type="submit">Update</button>
+
+</form>
 
 <%- include('./partials/footer') -%>

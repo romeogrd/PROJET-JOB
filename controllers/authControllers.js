@@ -69,8 +69,10 @@ module.exports.signup_post = async (req,res) => {
 
 module.exports.login_post = async (req,res) => {
     const { email, password } = req.body;
-
+    console.log('Email fourni par l\'utilisateur :', email);
+    console.log('Mot de passe fourni par l\'utilisateur :', password);
     try {
+        
         const user = await User.login(email, password);
         const token = createToken(user._id);
         res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000});
@@ -78,6 +80,7 @@ module.exports.login_post = async (req,res) => {
     }
     catch (err) {
         const errors = handleErrors(err);
+        console.log('Errors:', errors);
         res.status(400).json({ errors });
     }
 }
@@ -163,6 +166,53 @@ module.exports.jobdetail_get = async (req, res) => {
     }
   };
 
-  module.exports.jobupdate_get = (req, res) => {
-    res.render('jobupdate');
-}
+  module.exports.jobupdate_get = async (req, res) => {
+    const jobId = req.params.jobId;
+  
+    try {
+      const job = await Job.findById(jobId).exec();
+  
+      if (job) {
+        res.render('jobupdate', { job });
+      } else {
+        res.status(404).send('Job not found');
+      }
+    } catch (error) {
+      console.error('Error fetching job details for update:', error);
+      res.status(500).send('Internal Server Error');
+    }
+  };
+
+  module.exports.jobupdate_post = async (req, res) => {
+    const jobId = req.params.jobId;
+  
+    try {
+      // Find the job by ID
+      const job = await Job.findById(jobId).exec();
+  
+      if (!job) {
+        return res.status(404).send('Job not found');
+      }
+  
+      // Update job details based on the form submission
+      job.jobtitle = req.body.jobtitle;
+      job.company = req.body.company;
+      job.website = req.body.website;
+      job.nameEmployer = req.body.nameEmployer;
+      job.emailEmployer = req.body.emailEmployer;
+      job.phoneEmployer = req.body.phoneEmployer;
+      job.adressEmployer = req.body.adressEmployer;
+      job.origin = req.body.origin ;
+      job.status = req.body.status ;
+      job.comments = req.body.comments ;
+
+  
+      // Save the updated job
+      await job.save();
+  
+      res.redirect(`/jobdetail/${jobId}`); // Redirect to the job detail page
+    } catch (error) {
+      console.error('Error updating job details:', error);
+      res.status(500).send('Internal Server Error');
+    }
+  };

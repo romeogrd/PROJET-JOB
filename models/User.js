@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Job = require('./Job')
 const { isEmail } = require('validator');
 
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
 
 
 
@@ -53,17 +53,27 @@ userSchema.pre('save', async function (next) {
 
 // static method to login user
 
-userSchema.statics.login= async function(email, password) {
-    const user = await this.findOne({ email: email});
+userSchema.statics.login = async function(email, password) {
+    console.log('Email dans la méthode login :', email);
+    console.log('Mot de passe dans la méthode login :', password);
+    const user = await this.findOne({ email });
+
     if (user) {
+        console.log('Mot de passe stocké en base de données :', user.password);
         const auth = await bcrypt.compare(password, user.password);
-        if (auth){
+        console.log('Résultat de la comparaison de mot de passe :', auth);
+
+
+        if (auth) {
             return user;
         }
+        console.log('La comparaison du mot de passe a échoué');
         throw Error('incorrect password');
     }
-    throw Error('incorrect email')
-}
+
+    throw Error('incorrect email');
+};
+
 
 const User = mongoose.model('User', userSchema);
 

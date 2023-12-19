@@ -15,6 +15,6 @@
 <p>Status : <%= job.status %></p>
 <p>Comment : <%= job.comments %></p>
 
-<a href="/jobupdate">Update</a>
+<a href="/jobupdate/<%= job._id %>">Update</a>
 
 <%- include('./partials/footer') -%>

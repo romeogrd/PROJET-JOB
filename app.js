@@ -30,17 +30,16 @@ mongoose.connect(process.env.MONGODB_URI)
     .catch((err) => console.log(err));
 
 
-    // Fonction asynchrone qui renvoie la liste des jobs
-    
+
 
   
 
 app.get('*', checkUser);
 app.get(['/', '/index'], checkUser, requireAuth, async (req, res) => res.render('index'));
-app.get(['/newjob'], requireAuth, (req, res) => res.render('newjob'));
-app.get(['/myprofile'], requireAuth, (req, res) => res.render('myprofile'));
-app.get(['/jobdetail'], requireAuth, (req, res) => res.render('jobdetail'));
-app.get(['/jobupdate'], requireAuth, (req, res) => res.render('jobupdate'));
+app.get(['/newjob'], checkUser, requireAuth, (req, res) => res.render('newjob'));
+app.get(['/myprofile'], checkUser, requireAuth, (req, res) => res.render('myprofile'));
+app.get(['/jobdetail'], checkUser, requireAuth, (req, res) => res.render('jobdetail'));
+app.get(['/jobupdate'], checkUser, requireAuth, (req, res) => res.render('jobupdate'));
 
 
 

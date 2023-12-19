@@ -14,10 +14,11 @@ router.get('/login', authController.login_get);
 router.post('/login', authController.login_post);
 router.get('/', checkUser, authController.index_get);
 router.get('/logout', authController.logout_get);
-router.get('/newjob', authController.newjob_get);
-router.post('/newjob', authController.newjob_post);
-router.get('/jobdetail/:jobId', authController.jobdetail_get);
-router.get('/jobupdate', authController.jobupdate_get)
+router.get('/newjob', checkUser, authController.newjob_get);
+router.post('/newjob', checkUser, authController.newjob_post);
+router.get('/jobdetail/:jobId', checkUser, authController.jobdetail_get);
+router.get('/jobupdate/:jobId', checkUser, authController.jobupdate_get);
+router.post('/jobupdate/:jobId', checkUser, authController.jobupdate_post);
 
 
 module.exports = router;
