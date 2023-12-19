@@ -90,7 +90,7 @@ module.exports.index_get = async (req, res) => {
       const user = res.locals.user;
       console.log('User in index_get:', user);
   
-      if (user /* && user.jobs && user.jobs.length > 0 */) {
+      if (user) {
         const jobsDetails = await Promise.all(
           user.jobs.map(async (jobId) => {
             try {
