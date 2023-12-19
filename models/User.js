@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Job = require('./Job')
 const { isEmail } = require('validator');
 
-const bcrypt = require('bcrypt');
+const bcrypt = require('../node_modules/bcrypt');
 
 
 

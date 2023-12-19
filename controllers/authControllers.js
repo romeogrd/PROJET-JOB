@@ -108,7 +108,7 @@ module.exports.index_get = async (req, res) => {
         res.locals.jobs = jobsDetails;
         res.render('index', { user, jobs: jobsDetails });
       } else {
-        res.render('index', { user: null, jobs: [] });
+        res.redirect('/login');
       }
     } catch (error) {
       console.error('Error in index_get:', error);
