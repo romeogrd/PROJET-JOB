@@ -2,7 +2,14 @@ const mongoose = require('mongoose');
 const Job = require('./Job')
 const { isEmail } = require('validator');
 
-const bcrypt = require('bcrypt');
+if (process.env.VERCEL_ENV === 'production') {
+    // Load bcrypt or take other actions
+    const bcrypt = require('bcrypt');
+  } else {
+    // Load a mock or fallback
+    const bcrypt = require('bcryptjs'); // or any other alternative
+  }
+  
 
 
 
