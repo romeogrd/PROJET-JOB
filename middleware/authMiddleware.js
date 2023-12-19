@@ -25,12 +25,10 @@ const requireAuth = (req, res, next) => {
 
 //check current user
 const checkUser = (req, res, next) => {
-    console.log('Middleware checkUser: Début du traitement de la demande');
     const token = req.cookies.jwt;
 
     if(token) {
         jwt.verify(token, 'romeo secret', async (err, decodedToken) => {
-            console.log('Token décodé:', decodedToken);
             if (err) {
                 console.log(err.message);
                 res.locals.user = null;
@@ -46,7 +44,6 @@ const checkUser = (req, res, next) => {
         })
     }
     else {
-        console.log('Aucun jeton trouvé dans les cookies');
         res.locals.user = null;
         next();
     }
