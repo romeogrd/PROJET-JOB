@@ -90,7 +90,7 @@ module.exports.index_get = async (req, res) => {
       const user = res.locals.user;
       console.log('User in index_get:', user);
   
-      if (user && user.jobs && user.jobs.length > 0) {
+      if (user /* && user.jobs && user.jobs.length > 0 */) {
         const jobsDetails = await Promise.all(
           user.jobs.map(async (jobId) => {
             try {
@@ -120,7 +120,7 @@ module.exports.index_get = async (req, res) => {
 
 module.exports.logout_get = (req, res) => {
     res.cookie('jwt', '', { maxAge: 1});
-    res.redirect('/');
+    res.redirect('/login');
 }
 
 module.exports.newjob_get = (req, res) => {
@@ -140,7 +140,7 @@ module.exports.newjob_post = async (req,res) => {
 
         await currentUser.save();
         res.status(201).json({ job: job._id });
-
+     
     }
     catch(err) {
       const errors = handleErrors(err);
