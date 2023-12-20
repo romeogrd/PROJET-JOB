@@ -22,11 +22,11 @@ const userSchema = new mongoose.Schema({
     },
     firstname: {
         type: String,
-        required: [true, 'Please enter your first name' ],
+        required: [true, 'Please enter your first name'],
     },
     lastname: {
         type: String,
-        required: [true, 'Please enter your last name' ],
+        required: [true, 'Please enter your last name'],
     },
     github: {
         type: String,
@@ -38,22 +38,17 @@ const userSchema = new mongoose.Schema({
 });
 
 //fire a function after doc saved to db
-userSchema.post('save', function(doc, next) {
+userSchema.post('save', function (doc, next) {
     console.log('new user was created and saved', doc);
     next();
 });
 
 // fire a function before doc saved to db
-userSchema.pre('save', async function (next) {
-    const salt = await bcrypt.genSalt();
-    this.password = await bcrypt.hash(this.password, salt);
-    next();
-})
-
+ userSchema.pre('save', async function (next) {     console.log('user about to be created or saved', this);     if (!this.isModified('password')) {         return next();     }     const salt = await bcrypt.genSalt();     this.password = await bcrypt.hash(this.password, salt);     next() })
 
 // static method to login user
 
-userSchema.statics.login = async function(email, password) {
+userSchema.statics.login = async function (email, password) {
     console.log('Email dans la méthode login :', email);
     console.log('Mot de passe dans la méthode login :', password);
     const user = await this.findOne({ email });

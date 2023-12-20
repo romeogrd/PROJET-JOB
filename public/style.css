@@ -114,12 +114,11 @@ line-height: 30px;
     margin-right: 100px;
     row-gap: 100px;
     column-gap: 150px;
-    text-align: center;
-  
 }
 
 .jobDashboard {
     background-color: white;
+    border-radius: 10px;
     padding: 15px;
     position: relative;
 
@@ -127,12 +126,18 @@ line-height: 30px;
 
 .seemore {
     text-align: right;
+    text-decoration: underline;
+    font-size: 15px;
+    color: blue;
 }
 
 .statusDashboard {
    position: absolute;
    top: -10px;
    right: 20px;
+   padding: 10px;
+   background-color: green;
+   border-radius: 10px;
 }
 
 .jobdetail-container {
@@ -144,4 +149,19 @@ line-height: 30px;
 
 .updateBtn {
     text-decoration: underline;
+}
+
+.companyDashboard {
+    margin-bottom: 30px;
+}
+
+.jobtitleDashboard {
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.jobtitleDashboard, .companyDashboard {
+    margin-left: 20px;
 }
