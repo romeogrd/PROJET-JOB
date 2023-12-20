@@ -1,33 +1,35 @@
 <%- include('./partials/header') -%>
+<div class="form-container">
+
 <form action="/jobupdate/<%= job._id %>" method="POST">
 
-<label for="jobtitle">Job title</label>
+<label for="jobtitle">Job title</label><br>
 <input type="text" name="jobtitle" value="<%= job.jobtitle %>" required>
 <div class="jobtitle error"></div>
 
-<label for="company">Company</label>
+<label for="company">Company</label><br>
 <input type="text" name="company" value="<%= job.company %>" required>
 <div class="company error"></div>
 
-<label for="website">Website</label>
+<label for="website">Website</label><br>
 <input type="text" name="website" value="<%= job.website %>" required>
 <div class="website error"></div>
 
 <h2>Employer's contact</h2>
 
-<label for="nameEmployer">Name</label>
+<label for="nameEmployer">Name</label><br>
 <input type="text" name="nameEmployer" value="<%= job.nameEmployer %>">
 <div class="nameEmployer error"></div>
 
-<label for="emailEmployer">Email</label>
+<label for="emailEmployer">Email</label><br>
 <input type="email" name="emailEmployer" value="<%= job.emailEmployer %>">
 <div class="emailEmployer error"></div>
 
-<label for="phoneEmployer">Phone</label>
+<label for="phoneEmployer">Phone</label><br>
 <input type="text" name="phoneEmployer" value="<%= job.phoneEmployer %>">
 <div class="phoneEmployer error"></div>
 
-<label for="adressEmployer">Adress</label>
+<label for="adressEmployer">Adress</label><br>
 <input type="text" name="adressEmployer" value="<%= job.adressEmployer %>">
 <div class="adressEmployer error"></div>
 <br>
@@ -55,5 +57,5 @@
 <button type="submit">Update</button>
 
 </form>
-
+</div>
 <%- include('./partials/footer') -%>

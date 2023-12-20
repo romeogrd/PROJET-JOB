@@ -1,38 +1,38 @@
 <%- include('./partials/header') -%>
-
+<div class="form-container">
     <form>
-        <h2>Sign up</h2>
-        <label for="firstname">First name</label>
+        <h2 class="formTitle">Sign up</h2>
+        <label for="firstname">First name</label><br>
         <input type="text" name="firstname" required>
         <div class="firstname error"></div>
         <br>
-        <label for="lastname">Last name</label>
+        <label for="lastname">Last name</label><br>
         <input type="text" name="lastname" required>
         <div class="lastname error"></div>
         <br>
 
 
-        <label for="email">Email</label>
+        <label for="email">Email</label><br>
         <input type="text" name="email" required>
         <div class="email error"></div>
 
         <br>
 
-        <label for="github">GitHub [format : http://adress.com]</label>
+        <label for="github">GitHub [format : http://adress.com]</label><br>
         <input type="url" name="github">
         <div class="github error"></div>
         <br>
-        <label for="password">Password</label>
+        <label for="password">Password</label><br>
         <input type="password" name="password" required>
         <div class="password error"></div>
         <br>
-        <label for="repeatPassword">Repeat password</label>
+        <label for="repeatPassword">Repeat password</label><br>
         <input type="password" name="repeatPassword" required>
         <div class="repeatPassword error"></div>
 
         <button>Sign up</button>
     </form>
-
+</div>
     <script>
         const form = document.querySelector('form');
         const emailError = document.querySelector(".email.error");

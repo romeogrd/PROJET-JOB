@@ -1,5 +1,5 @@
 <%- include('./partials/header') -%>
-
+<div class="jobdetail-container">
 <p><%= job.jobtitle %></p>
        
 <p>Company : <%= job.company %></p>
@@ -15,6 +15,6 @@
 <p>Status : <%= job.status %></p>
 <p>Comment : <%= job.comments %></p>
 
-<a href="/jobupdate/<%= job._id %>">Update</a>
-
+<p class="updateBtn"><a href="/jobupdate/<%= job._id %>">Update</a></p>
+</div>
 <%- include('./partials/footer') -%>

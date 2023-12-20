@@ -1,16 +1,16 @@
 <%- include('./partials/header') -%>
-
+<div class="form-container">
     <form>
-        <h2>Login</h2>
-        <label for="email">Email</label>
+        <h2 class="formTitle">Login</h2>
+        <label for="email">Email</label><br>
         <input type="text" name="email" required>
         <div class="email error"></div>
-        <label for="password">Password</label>
+        <label for="password">Password</label><br>
         <input type="password" name="password" required>
         <div class="password error"></div>
-        <button>Log in</button>
+        <button class="btnForm">Log in</button>
        </form>
-    
+    </div>
        <script>
         const form = document.querySelector('form');
         const emailError = document.querySelector(".email.error");

@@ -1,24 +1,26 @@
 <%- include('./partials/header') -%>
 
-<h1>Welcome to the homepage</h1>
-<h1><a href="/myprofile">My Profile</a></h1>
+<h1 class="dashboardTitle">Dashboard</h1>
+<p class="newjobBtn"><a href="/newjob" >Create a new job</a> </p>
 
+<div class="dashboard">
 <% console.log('User:', user); console.log(jobs); %>
 <% if (user) { %>
   <% if (jobs && jobs.length > 0) { %>
     <% jobs.forEach((job) => { %>
-      <div class="job">
-        <p><%= job.status %></p>
-        <p><%= job.jobtitle %></p>
-        <p><%= job.nameEmployer %></p>
-        <p><a href="/jobdetail/<%= job._id %>">See more</a></p>
+      <div class="jobDashboard">
+        <p class="statusDashboard"><%= job.status %></p>
+        <p class="jobtitleDashboard"><%= job.jobtitle %></p>
+        <p class="nameEmployerDashboard"><%= job.nameEmployer %></p>
+        <p class="seemore"><a href="/jobdetail/<%= job._id %>">See more</a></p>
       </div>
     <% }); %>
+</div>
   <% } else { %>
-    <p>No jobs found</p>
+    <p class="errorJob">No jobs found</p>
   <% } %>
 <% } %>
 
-<a href="/newjob">Create a new job</a> 
+
 
 <%- include('./partials/footer') -%>

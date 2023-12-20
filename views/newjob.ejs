@@ -1,36 +1,36 @@
 <%- include('./partials/header') -%>
 
-
+<div class="form-container">
     <form>
-        <h1>Create job</h1>
+        <h1 class="formTitle">Create job</h1>
 
-        <label for="jobtitle">Job title</label>
+        <label for="jobtitle">Job title</label><br>
         <input type="text" name="jobtitle" required>
         <div class="jobtitle error"></div>
 
-        <label for="company">Company</label>
+        <label for="company">Company</label><br>
         <input type="text" name="company">
         <div class="company error"></div>
 
-        <label for="website">Website</label>
+        <label for="website">Website</label><br>
         <input type="text" name="website" required>
         <div class="website error"></div>
 
-        <h2>Employer's contact</h2>
+        <h2 formTitle>Employer's contact</h2>
 
-        <label for="nameEmployer">Name</label>
+        <label for="nameEmployer">Name</label><br>
         <input type="text" name="nameEmployer">
         <div class="nameEmployer error"></div>
 
-        <label for="emailEmployer">Email</label>
+        <label for="emailEmployer">Email</label><br>
         <input type="email" name="emailEmployer">
         <div class="emailEmployer error"></div>
 
-        <label for="phoneEmployer">Phone</label>
+        <label for="phoneEmployer">Phone</label><br>
         <input type="text" name="phoneEmployer">
         <div class="phoneEmployer error"></div>
 
-        <label for="adressEmployer">Adress</label>
+        <label for="adressEmployer">Adress</label><br>
         <input type="text" name="adressEmployer">
         <div class="adressEmployer error"></div>
         <br>
@@ -58,7 +58,7 @@
         <button>Create</button>
 
     </form>
-
+</div>
     <script>
         const form = document.querySelector('form');
 
