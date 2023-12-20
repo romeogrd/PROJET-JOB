@@ -20,7 +20,7 @@ img {
 }
 
 nav {
-    background-color: #bebebe;
+    background-color: #5784ba;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -32,7 +32,7 @@ nav {
 }
 
 body {
-    background-color: #D9D9D9;
+    background-color: #f7f6cf;
     font-family: Arial, Helvetica, sans-serif;
 
 }
@@ -40,7 +40,9 @@ body {
 ul {
     text-align: right;
 }
-
+.logo {
+font-style: italic;
+}
 .welcome {
     font-weight: bold;
     margin-bottom: 15px;
@@ -49,10 +51,15 @@ ul {
 .logoutBtn {
     font-weight: bold;
     background-color: yellow;
-    padding: 8px;
+    padding: 5px;
     border-radius: 10px;
     border-color: black;
     border-style: solid;
+}
+
+.logoutBtn:hover {
+    background-color: black;
+    color: white;
 }
 
 .myprofileBtn {
@@ -118,7 +125,7 @@ input {
 }
 
 .jobDashboard {
-    background-color: white;
+    background-color: #b6d8f2;
     border-radius: 10px;
     padding: 15px;
     position: relative;
@@ -132,12 +139,16 @@ input {
     color: blue;
 }
 
+.seemore:hover{
+    scale: 1.05;
+}
+
 .statusDashboard {
     position: absolute;
     top: -10px;
     right: 20px;
     padding: 10px;
-    background-color: green;
+    color: white;
     border-radius: 10px;
 }
 
