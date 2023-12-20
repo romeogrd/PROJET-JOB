@@ -3,88 +3,89 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
-  
-  ul {
+}
+
+ul {
     list-style: none;
-  
-  }
-  
-  a {
+
+}
+
+a {
     text-decoration: none;
     color: inherit;
-  }
-  
-  img {
-    width: 100%;
-  }
+}
 
-  nav {
+img {
+    width: 100%;
+}
+
+nav {
     background-color: #bebebe;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top : 20px;
+    padding-top: 20px;
     padding-left: 30px;
     padding-right: 30px;
     padding-bottom: 20px;
 
-  }
+}
 
-  body {
+body {
     background-color: #D9D9D9;
     font-family: Arial, Helvetica, sans-serif;
-    
-  }
 
-  ul {
+}
+
+ul {
     text-align: right;
-  }
+}
 
-  .welcome {
+.welcome {
     font-weight: bold;
     margin-bottom: 15px;
-  }
+}
 
-  .logoutBtn {
+.logoutBtn {
     font-weight: bold;
     background-color: yellow;
     padding: 8px;
     border-radius: 10px;
     border-color: black;
     border-style: solid;
-  }
+}
 
-  .myprofileBtn {
+.myprofileBtn {
     text-decoration: underline;
-  }
- 
-  .dashboardTitle, .myprofileTitle {
+}
+
+.dashboardTitle,
+.myprofileTitle {
     text-align: center;
     margin-top: 30px;
     margin-bottom: 20px;
-  }
+}
 
-  .newjobBtn {
+.newjobBtn {
     text-align: center;
     margin-bottom: 20px;
     text-decoration: underline;
-    
-   
-   
-  }
 
-  .errorJob {
+
+
+}
+
+.errorJob {
     text-align: center;
-  }
+}
 
-  .formTitle {
-    
+.formTitle {
+
     margin-bottom: 30px;
-    
-  } 
 
-  
+}
+
+
 .form-container {
     display: flex;
     justify-content: center;
@@ -97,18 +98,18 @@
 }
 
 input {
-margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 .myprofileText {
     text-align: center;
-line-height: 30px;
+    line-height: 30px;
 }
 
 
 .dashboard {
     display: grid;
-    grid-template-columns:  1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     margin-top: 50px;
     margin-left: 100px;
     margin-right: 100px;
@@ -132,12 +133,12 @@ line-height: 30px;
 }
 
 .statusDashboard {
-   position: absolute;
-   top: -10px;
-   right: 20px;
-   padding: 10px;
-   background-color: green;
-   border-radius: 10px;
+    position: absolute;
+    top: -10px;
+    right: 20px;
+    padding: 10px;
+    background-color: green;
+    border-radius: 10px;
 }
 
 .jobdetail-container {
@@ -162,6 +163,7 @@ line-height: 30px;
     margin-bottom: 10px;
 }
 
-.jobtitleDashboard, .companyDashboard {
+.jobtitleDashboard,
+.companyDashboard {
     margin-left: 20px;
 }
