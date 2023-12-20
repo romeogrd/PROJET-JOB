@@ -20,7 +20,22 @@
     <p class="errorJob">No jobs found</p>
   <% } %>
 <% } %>
+<script>
+    
+    const statusElements = document.querySelectorAll('.statusDashboard');
 
-
+   
+    statusElements.forEach((statusElement) => {
+        if (statusElement.innerText === 'Negative') {
+            statusElement.style.backgroundColor = 'red';
+        } else if (statusElement.innerText === 'CV sent') {
+            statusElement.style.backgroundColor = 'blue';
+        } else if (statusElement.innerText === 'Interview') {
+            statusElement.style.backgroundColor = 'green';
+        } else {
+            statusElement.style.backgroundColor = 'yellow';
+        }
+    });
+</script>
 
 <%- include('./partials/footer') -%>
