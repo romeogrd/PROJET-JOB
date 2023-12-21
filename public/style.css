@@ -70,6 +70,7 @@ font-style: italic;
     border-style: none;
 }
 
+
 .logoutBtn:hover, .updateBtn:hover, .createjobBtn:hover{
     background-color: black;
     color: white;
@@ -119,6 +120,12 @@ font-style: italic;
     text-align: center;
     margin-top: 50px;
 }
+
+.form-container input {
+    margin-bottom: 15px;
+    margin-top: 5px;
+}
+
 
 .btnForm {
     margin-top: 30px;
@@ -181,17 +188,21 @@ input {
     line-height: 30px;
 }
 
-.updateBtn, .deleteBtn {
-    text-decoration: underline;
+.contactText {
+    font-weight: bold;
+    margin-top: 20px;
 }
 
-.deleteBtn{
+.deleteBtn {
+    text-decoration: underline;
     cursor: pointer;
 }
+
 
 .button-container{
     display: flex;
     justify-content:center;
+    margin-top: 30px;
 
 }
 .companyDashboard {
@@ -209,3 +220,38 @@ input {
 .companyDashboard {
     margin-left: 20px;
 } 
+
+.logo {
+    position: relative;
+    text-decoration: none;
+    color: white; /* Couleur du texte */
+  }
+  
+  /* Ligne en dessous du texte lorsqu'on est hover */
+  .logo::before,
+  .logo::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 3px;
+    height: 2px; /* Épaisseur de la ligne */
+    background-color: white; /* Couleur de la ligne */
+    transform-origin: left;
+    transform: scaleX(0); /* Ligne invisible par défaut */
+    transition: transform 0.3s ease;
+  }
+  
+  /* Lorsqu'on est hover, la ligne se déploie de gauche à droite */
+  .logo:hover::before,
+  .logo:hover::after {
+    transform-origin: right;
+    transform: scaleX(1);
+  }
+  
+  /* Lorsqu'on n'est plus hover, la ligne se retire de droite à gauche */
+  .logo:not(:hover)::before,
+  .logo:not(:hover)::after {
+    transform-origin: left;
+    transform: scaleX(0);
+  }
