@@ -109,7 +109,7 @@ font-style: italic;
 
 .formTitle {
     font-family: 'Playfair Display', serif;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 
 }
 
@@ -118,21 +118,29 @@ font-style: italic;
     display: flex;
     justify-content: center;
     text-align: center;
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
-.form-container input {
+/* .form-container input {
     margin-bottom: 15px;
     margin-top: 5px;
-}
+} */
 
 
 .btnForm {
-    margin-top: 30px;
+    margin-top: 10px;
+    border-radius: 10px;
+    padding: 10px;
+    border-style: none;
+    cursor: pointer;
 }
 
 input {
-    margin-bottom: 10px;
+    margin-top: 5px;
+    margin-bottom: 13px; 
+    border-radius: 10px;
+    padding: 5px;
+    border-style: none;
 }
 
 .myprofileText {
@@ -182,7 +190,6 @@ input {
 }
 
 .jobdetail-container {
-    justify-content: center;
     text-align: center;
     margin-top: 50px;
     line-height: 30px;
@@ -196,6 +203,9 @@ input {
 .deleteBtn {
     text-decoration: underline;
     cursor: pointer;
+    max-width: 60px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 
@@ -255,3 +265,7 @@ input {
     transform-origin: left;
     transform: scaleX(0);
   }
+
+
+
+ 

@@ -2,24 +2,37 @@
 
 <h1 class="dashboardTitle">Dashboard</h1>
 <p class="newjobBtn"><a href="/newjob" >Create a new job</a> </p>
-
 <div class="dashboard">
-<% console.log('User:', user); console.log(jobs); %>
-<% if (user) { %>
-  <% if (jobs && jobs.length > 0) { %>
-    <% jobs.forEach((job) => { %>
-      <div class="jobDashboard">
-        <p class="statusDashboard"><%= job.status %></p>
-        <p class="jobtitleDashboard"><%= job.jobtitle %></p>
-        <p class="companyDashboard"><%= job.company %></p>
-        <p class="seemore"><a href="/jobdetail/<%= job._id %>">See more</a></p>
-      </div>
-    <% }); %>
-</div>
+  <% console.log('User:', user); console.log(jobs); %>
+  <% if (user && jobs && jobs.length > 0) { %>
+      <% jobs.forEach((job) => { %>
+          <% if (job && typeof job === 'object') { %>
+              <div class="jobDashboard">
+                  <% if (job.status) { %>
+                      <p class="statusDashboard"><%= job.status %></p>
+                  <% } else { %>
+                      <p class="statusDashboard">N/A</p>
+                  <% } %>
+                  <% if (job.jobtitle) { %>
+                      <p class="jobtitleDashboard"><%= job.jobtitle %></p>
+                  <% } else { %>
+                      <p class="jobtitleDashboard">N/A</p>
+                  <% } %>
+                  <% if (job.company) { %>
+                      <p class="companyDashboard"><%= job.company %></p>
+                  <% } else { %>
+                      <p class="companyDashboard">N/A</p>
+                  <% } %>
+                  <p class="seemore"><a href="/jobdetail/<%= job._id %>">See more</a></p>
+              </div>
+          <% } %>
+      <% }); %>
   <% } else { %>
-    <p class="errorJob">No jobs found</p>
+      <p class="errorJob">No jobs found</p>
   <% } %>
-<% } %>
+</div>
+
+
 <script>
     
     const statusElements = document.querySelectorAll('.statusDashboard');

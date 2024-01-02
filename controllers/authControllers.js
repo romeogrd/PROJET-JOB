@@ -177,8 +177,9 @@ module.exports.jobdetail_delete = async (req, res) => {
         { $pull: { jobs: jobId } }
     );
  
-    await res.json({ message: 'Job deleted successfully' });
+/*     await res.json({ success: true, message: 'Job deleted successfully' }); */
     
+    res.redirect('/');
  };
 
 
