@@ -18,36 +18,29 @@
 <p class="updateBtn"><a href="/jobupdate/<%= job._id %>">Update</a></p>
 </div>
 
-<p class="deleteBtn" data-job-id="<%= job._id %>"><a href="/">Delete</a></p>
+<p class="deleteBtn" data-job-id="<%= job._id %>"><a href="">Delete</a></p>
 </div>
 <script>
     const deleteBtn = document.querySelector('.deleteBtn');
     const jobId = deleteBtn.getAttribute('data-job-id');
 
     deleteBtn.addEventListener('click', async () => {
-    try {
-        const res = await fetch(`/jobdetail/${jobId}`, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
+        try {
+            const res = await fetch(`/jobdetail/${jobId}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
 
-        const data = await res.json();
-        console.log(data);
-
-        // Check if the deletion was successful before redirecting
-        if (data.success) {
-            // Redirect to the homepage
-            window.location.href = '/';
-        } else {
-            console.error('Deletion failed:', data.error);
+            const data = await res.json();
+            console.log(data);
+                
+        } catch (error) {
+            console.error('Error:', error);
         }
-    } catch (error) {
-        console.error('Error:', error);
-    }
-});
 
+    });
 </script>
 
 
