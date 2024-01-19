@@ -34,21 +34,22 @@ nav {
 }
 
 html{
-    background: linear-gradient(#f4654f, #da3117);
-    height: 100vh;
+    
+    min-height: 100%;
 }
 
 body {
-    
+    background: linear-gradient(#f4654f, #da3117);
     font-family: Arial, Helvetica, sans-serif;
     color: white;
+   /*  min-height: 100%; */
 }
 
 ul {
     text-align: right;
 }
 .logo {
-font-size: 30px;
+font-size: 35px;
 font-family: 'Playfair Display', serif;
 font-style: italic;
 
@@ -84,6 +85,12 @@ font-style: italic;
     color: black;
 }
 
+/* @media only screen and (max-width: 500px) {
+    .separator {
+        display: none;
+    }
+} */
+
 
 .dashboardTitle,
 .myprofileTitle {
@@ -91,6 +98,7 @@ font-style: italic;
     margin-top: 30px;
     margin-bottom: 20px;
     font-family: 'Playfair Display', serif;
+    font-size: 25px;
 }
 
 .newjobBtn {
@@ -150,6 +158,38 @@ input {
     row-gap: 100px;
     column-gap: 150px;
 }
+
+@media only screen and (max-width: 767px) {
+    .dashboard {
+        grid-template-columns: 1fr; /* Passez à une seule colonne */
+        margin-left: 30px; /* Ajustez les marges selon vos besoins pour une meilleure apparence sur les téléphones */
+        margin-right: 30px;
+        row-gap: 50px; /* Ajustez l'espacement des lignes selon vos besoins */
+        column-gap: 0; /* Supprimez l'espacement des colonnes sur les téléphones */
+    }
+    nav {
+        display: block;
+        text-align: center;
+    }
+    nav ul {
+        text-align: center;
+        margin-top: 10px;
+    }
+}
+
+/* Media query pour les écrans de taille maximale d'iPod (par exemple, 480px) */
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    .dashboard {
+        grid-template-columns: 1fr 1fr; /* Passez à deux colonnes pour les iPods */
+        margin-left: 20px; /* Ajustez les marges selon vos besoins pour une meilleure apparence sur les iPods */
+        margin-right: 20px;
+        row-gap: 50px; /* Ajustez l'espacement des lignes selon vos besoins */
+        column-gap: 30px; /* Ajoutez de l'espacement entre les colonnes pour les iPods */
+    };
+    
+}
+
+
 
 .jobDashboard {
     background-color: white;
@@ -226,8 +266,6 @@ input {
     text-decoration: none;
     color: white; /* Couleur du texte */
   }
-  
-  /* Ligne en dessous du texte lorsqu'on est hover */
   .logo::before,
   .logo::after {
     content: '';
@@ -254,4 +292,20 @@ input {
   .logo:not(:hover)::after {
     transform-origin: left;
     transform: scaleX(0);
+<<<<<<< Updated upstream
   }
+=======
+  }
+
+
+/* Media query pour les écrans de taille maximale de téléphone (par exemple, 767px) */
+@media only screen and (max-width: 767px) {
+    .logo::before,
+    .logo::after {
+        height: 0; /* Set the height to 0 for no line */
+        background-color: transparent; /* Remove line color */
+        transform: scaleX(0); /* Invisible line by default on phones */
+    }
+    
+}
+>>>>>>> Stashed changes
