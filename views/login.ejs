@@ -41,7 +41,9 @@
                     passwordError.textContent = data.errors.password;
                 }
                 if (data.user) {
-                    location.assign('/');
+                  setTimeout(() => {
+            location.assign('/');
+        }, 1000);
                 }
             }
             catch (err) {

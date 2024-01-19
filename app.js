@@ -31,9 +31,19 @@ mongoose.connect(process.env.MONGODB_URI)
     .catch((err) => console.log(err));
 
 
+// Gestionnaire d'erreurs global
+app.use((err, req, res, next) => {
+    console.error('Erreur globale:', err);
 
+    // Vérifiez si la requête accepte le JSON
+    if (req.accepts('json')) {
+        return res.status(500).json({ error: 'Internal Server Error' });
+    }
 
-  
+    // Sinon, renvoie une page d'erreur HTML
+    res.status(500).send('Internal Server Error');
+});
+
 
 app.get('*', checkUser);
 app.get(['/', '/index'], checkUser, requireAuth, async (req, res) => res.render('index'));

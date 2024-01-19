@@ -47,28 +47,25 @@ userSchema.post('save', function (doc, next) {
  userSchema.pre('save', async function (next) {     console.log('user about to be created or saved', this);     if (!this.isModified('password')) {         return next();     }     const salt = await bcrypt.genSalt();     this.password = await bcrypt.hash(this.password, salt);     next() })
 
 // static method to login user
-
 userSchema.statics.login = async function (email, password) {
-    console.log('Email dans la méthode login :', email);
-    console.log('Mot de passe dans la méthode login :', password);
-    const user = await this.findOne({ email });
-
-    if (user) {
-        console.log('Mot de passe stocké en base de données :', user.password);
-        const auth = await bcrypt.compare(password, user.password);
-        console.log('Résultat de la comparaison de mot de passe :', auth);
-
-
-        if (auth) {
-            return user;
+    try {
+        const user = await this.findOne({ email });
+ 
+        if (user) {
+            const auth = await bcrypt.compare(password, user.password);
+ 
+            if (auth) {
+                return user;
+            }
+ 
+            return { error: 'incorrect password' };
         }
-        console.log('La comparaison du mot de passe a échoué');
-        throw Error('incorrect password');
+ 
+        return { error: 'incorrect email' };
+    } catch (error) {
+        return { error: 'An error occurred.' };
     }
-
-    throw Error('incorrect email');
-};
-
+ };
 
 const User = mongoose.model('User', userSchema);
 

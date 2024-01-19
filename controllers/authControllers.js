@@ -12,17 +12,17 @@ const handleErrors = (err) => {
 
     //incorrect email
     if (err.message === 'incorrect email') {
-        errors.email = 'that email is not registered';
+        errors.email = 'That email is not registered';
     }
 
     //incorrect password
     if (err.message === 'incorrect password') {
-        errors.password = 'that password is incorrect';
+        errors.password = 'That password is incorrect';
     }
 
     //duplicate error code
     if (err.code === 11000) {
-        errors.email = 'That email is already registered';
+        errors.email = 'that email is already registered';
         return errors;
     }
 
@@ -48,9 +48,12 @@ module.exports.signup_get = (req, res) => {
     res.render('signup');
 }
 
+
 module.exports.login_get = (req, res) => {
+    res.locals.errors = {}; // Initialiser la variable errors
+    console.log('res.locals (dans login_get):', res.locals);
     res.render('login');
-}
+};
 
 module.exports.signup_post = async (req, res) => {
     const { email, password, firstname, lastname, github } = req.body;
@@ -67,23 +70,24 @@ module.exports.signup_post = async (req, res) => {
     }
 }
 
-module.exports.login_post = async (req, res) => {
+// authControllers.js
+// Dans authControllers.js
+module.exports.login_post = async (req, res, next) => {
     const { email, password } = req.body;
-    console.log('Email fourni par l\'utilisateur :', email);
-    console.log('Mot de passe fourni par l\'utilisateur :', password);
+  
+    console.log('Tentative de connexion avec Email:', email);
     try {
-
         const user = await User.login(email, password);
         const token = createToken(user._id);
         res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 });
         res.status(200).json({ user: user._id });
-    }
-    catch (err) {
+    }  catch (err) {
         const errors = handleErrors(err);
         console.log('Errors:', errors);
         res.status(400).json({ errors });
     }
 }
+
 
 module.exports.index_get = async (req, res) => {
     try {
@@ -179,7 +183,9 @@ module.exports.jobdetail_delete = async (req, res) => {
  
 /*     await res.json({ success: true, message: 'Job deleted successfully' }); */
     
+setTimeout(() => {
     res.redirect('/');
+}, 10000); // 2000 milliseconds équivalent à 2 secondes
  };
 
 

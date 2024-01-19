@@ -3,7 +3,6 @@
 <h1 class="dashboardTitle">Dashboard</h1>
 <p class="newjobBtn"><a href="/newjob" >Create a new job</a> </p>
 <div class="dashboard">
-  <% console.log('User:', user); console.log(jobs); %>
   <% if (user && jobs && jobs.length > 0) { %>
       <% jobs.forEach((job) => { %>
           <% if (job && typeof job === 'object') { %>
@@ -35,19 +34,20 @@
 
 <script>
     
-    const statusElements = document.querySelectorAll('.statusDashboard');
+    document.addEventListener('DOMContentLoaded', () => {
+        const statusElements = document.querySelectorAll('.statusDashboard');
 
-   
-    statusElements.forEach((statusElement) => {
-        if (statusElement.innerText === 'Negative') {
-            statusElement.style.backgroundColor = 'red';
-        } else if (statusElement.innerText === 'CV sent') {
-            statusElement.style.backgroundColor = 'blue';
-        } else if (statusElement.innerText === 'Interview') {
-            statusElement.style.backgroundColor = 'green';
-        } else {
-            statusElement.style.backgroundColor = '#f5df4d';
-        }
+        statusElements.forEach((statusElement) => {
+            if (statusElement.innerText === 'Negative') {
+                statusElement.style.backgroundColor = 'red';
+            } else if (statusElement.innerText === 'CV sent') {
+                statusElement.style.backgroundColor = 'blue';
+            } else if (statusElement.innerText === 'Interview') {
+                statusElement.style.backgroundColor = 'green';
+            } else {
+                statusElement.style.backgroundColor = '#f5df4d';
+            }
+        });
     });
 </script>
 
